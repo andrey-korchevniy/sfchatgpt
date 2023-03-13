@@ -1,0 +1,19 @@
+<template>
+    <div class="wrapper">
+
+    <section class="content">
+        <div class="columns">
+        <main class="sidebar-first">
+            <c-options onitemclick={handleOptionSelected}></c-options>
+        </main>       
+
+        <aside class="main" >
+            <lightning-card >
+                <c-list api-name={selectedObject} id-list={recordIdList}></c-list>
+            </lightning-card>
+        </aside>
+
+        </div>
+    </section>
+    </div>
+</template>

@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-box">
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="searchBox">Search</label>
+            <div class="slds-form-element__control">
+                <lightning-input type="search" id="searchBox" value={searchText} onchange={handleSearchChange}></lightning-input>
+            </div>
+        </div>
+        <div class="slds-scrollable_y" style="height: 300px;">
+            <ul class="slds-list_vertical slds-has-dividers_bottom-space">
+                <template for:each={filteredItems} for:item="option">
+                    <li key={option.apiName} onclick={handleItemClick} data-value={option.apiName} class={option.selected}>
+                        <div class="slds-truncate" title={option.label}>{option.label}</div>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </div>
+</template>

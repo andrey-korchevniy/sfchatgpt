@@ -1,0 +1,9 @@
+.slds-list_vertical li:hover {
+    cursor: pointer;
+    color: blue;
+}
+
+.selected {
+    color: red;
+    background-color: aqua;
+}
