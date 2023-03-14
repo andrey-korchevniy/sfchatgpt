@@ -38,21 +38,38 @@ export default class List extends LightningElement {
         console.log('--> записи АРЕХ контроллера в лист --->', result.data);
       }
     }
-  
-    // connectedCallback() {
-    //     this.data = generateData({ amountOfRecords: 100 });
-    // }
 
-    // increaseRowOffset() {
-    //     this.rowOffset += 100;
-    // }
-  
-    // refreshRecords() {
-    //     return refreshApex(this.wiredRecords);
-    // }
-  
-//   set recordIdList(apiName) {
-  
-// }
+  handleClick() {
+    console.log('***** создание CSV ********');
+    if (this.column)
+      //* Создание заголовка CSV файла
+    try {
+          const csvHeader =columns.join(",") + "\n";
+    console.log('columns========>', csvHeader);
+    } catch (error) {
+      console.log('error ============<', error);
+    }
 
+
+      //* Создание строк CSV файла
+      const csvRows = this.data.map((record) =>
+        Object.values(record).map((value) => `"${value}"`).join(",") + "\n"
+      ).join("");
+
+
+      //* Конкатенация заголовка и строк CSV файла
+      const csvContent = csvHeader + csvRows;
+      console.log('csvContent ====>', csvContent);
+
+      //* Создание объекта Blob из текстового содержимого CSV файла
+      const csvBlob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    
+      //* Создание ссылки на скачивание CSV файла
+      const downloadLink = document.createElement("a");
+      downloadLink.href = URL.createObjectURL(csvBlob);
+      downloadLink.download = "records.csv";
+      downloadLink.click();
+
+    }
+  
 }

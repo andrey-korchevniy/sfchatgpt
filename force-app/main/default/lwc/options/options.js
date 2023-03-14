@@ -2,8 +2,8 @@ import { LightningElement, wire, track } from 'lwc';
 import getObjectList from '@salesforce/apex/SchemaController.getObjectList';
 
 export default class Options extends LightningElement {
-    @track items = [];
-    @track searchText = '';
+    items = [];
+    searchText = '';
 
     @wire(getObjectList)
     objectList;

@@ -13,6 +13,8 @@
                     column-widths-mode="auto">
             </lightning-datatable>
         </div>
+
+        <lightning-button label="Make CSV" title="button" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
     </template>
 
     <template if:false={isData}>
@@ -20,15 +22,3 @@
     </template>
 
 </template>    
-
-<!-- <table>
-        <thead>
-            <tr>
-                <template for:each={columns} for:item="column">
-                    <th key={column.fieldApiName}>{column.label}</th>
-                </template>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table> -->
